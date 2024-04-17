@@ -12,17 +12,24 @@ public class Cam : MonoBehaviour
     [SerializeField] float bottomlimit;
     // Start is called before the first frame update
     private void Update() {
-        if(Entrance.IsInTank == false){
+        if(Entrance.IsInTank == false && EntranceEnemytank.IsInETank==false){
             transform.position = new Vector3(
-                Mathf.Clamp(transform.position.x,-11.35f,7.03f),
+                Mathf.Clamp(transform.position.x,-11.35f,14.2f),
                 Mathf.Clamp(transform.position.y, -1f, 6.96f),
                 transform.position.z
             );
         }
-        if(Entrance.IsInTank == true){
+        if(Entrance.IsInTank == true && EntranceEnemytank.IsInETank == false){
             transform.position = new Vector3(
                 Mathf.Clamp(transform.position.x,47f,55.7f),
                 Mathf.Clamp(transform.position.y, 41f,59.9f),
+                transform.position.z
+            );
+        }
+        if(EntranceEnemytank.IsInETank == true && Entrance.IsInTank == false){
+            transform.position = new Vector3(
+                Mathf.Clamp(transform.position.x,leftlimit,rightlimit),
+                Mathf.Clamp(transform.position.y, bottomlimit,toplimit),
                 transform.position.z
             );
         }

@@ -12,15 +12,16 @@ public class Entrance : MonoBehaviour
       EC.isTrigger = true;
    }
    private void OnTriggerEnter2D(Collider2D other) {
-      Debug.Log("HOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
       if(other.tag == "Player"){
          if(IsInTank == false){
          other.transform.position = new Vector3(58,44,-9);
          IsInTank = true;
+          EntranceEnemytank.IsInETank=false;
       }else
       {
          other.transform.position= new Vector3(-13,1,-4);
          IsInTank= false;
+         EntranceEnemytank.IsInETank=false;
       }
    }
       
